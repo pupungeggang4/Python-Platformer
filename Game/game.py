@@ -1,4 +1,6 @@
 import pygame, sys
+import scenetitle, scenefield
+import res
 
 class Game():
     def run(self):
@@ -14,12 +16,26 @@ class Game():
         self.clock = pygame.time.Clock()
         self.fps = 60
 
+        self.scene = 'field'
+        self.state = ''
+
     def main(self):
         while True:
             self.clock.tick(self.fps)
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    sys.exit()
+            self.handle_input()
+            self.handle_scene()
+
+    def handle_input(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+    def handle_scene(self):
+        if self.scene == 'title':
+            scenetitle.loop(self)
+
+        elif self.scene == 'field':
+            scenefield.loop(self)
 
 Game().run()
