@@ -4,6 +4,9 @@ import res
 import UI
 
 def loop(game):
+    render(game)
+
+def render(game):
     game.screen.fill(res.COLOR_WHITE)
     game.screen.blit(res.font_neodgm_32.render('Platformer', False, res.COLOR_BLACK), UI.Title.text_title)
     pygame.draw.rect(game.screen, res.COLOR_BLACK, UI.Title.button_start, 2)
@@ -13,7 +16,10 @@ def loop(game):
     pygame.display.flip()
 
 def mouse_up(game, button, mouse):
-    pass
+    if button == 1:
+        if game.point_inside_rect_UI(mouse, UI.Title.button_start):
+            game.scene = 'field'
+            game.state = ''
 
 def key_down(game, key):
     pass

@@ -1,7 +1,11 @@
 import pygame, sys
+import res
+
+from primitive import *
+from prototype import *
+
 import scenetitle
 import scenefield
-import res
 
 class Game():
     def run(self):
@@ -66,6 +70,7 @@ class Game():
         elif self.scene == 'field':
             scenefield.loop(self)
 
+    @staticmethod
     def point_inside_rect_UI(point, rect):
         return point[0] > rect[0] and point[0] < rect[0] + rect[2] and point[1] > rect[1] and point[1] < rect[0] + rect[2]
 

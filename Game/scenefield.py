@@ -7,8 +7,12 @@ from prototype import *
 from primitive import *
 
 def loop(game):
+    render(game)
+
+def render(game):
     game.screen.fill(res.COLOR_WHITE)
-    Render.render_menu(game)
+    if game.menu == True:
+        Render.render_menu(game)
     pygame.display.flip()
 
 def mouse_up(game, button, mouse):

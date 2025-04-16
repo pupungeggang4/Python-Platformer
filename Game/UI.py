@@ -7,3 +7,8 @@ class Title():
 
 class Menu():
     rect = [320, 280, 640, 240]
+    text_pause = [324, 304]
+    button_resume = [320, 360, 640, 80]
+    text_resume = [324, 384]
+    button_exit = [320, 440, 640, 80]
+    text_exit = [324, 464]
