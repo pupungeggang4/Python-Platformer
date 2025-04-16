@@ -1,5 +1,6 @@
 import pygame, sys
-import scenetitle, scenefield
+import scenetitle
+import scenefield
 import res
 
 class Game():
@@ -10,14 +11,18 @@ class Game():
     def init(self):
         pygame.init()
         pygame.font.init()
+
+        res.font_neodgm_32 = pygame.font.Font('Font/neodgm.ttf', 32)
+
         self.resolution = [1280, 800]
         self.screen = pygame.display.set_mode(self.resolution, pygame.SCALED, vsync=1)
         pygame.display.set_caption('Platformer')
         self.clock = pygame.time.Clock()
         self.fps = 60
 
-        self.scene = 'field'
+        self.scene = 'title'
         self.state = ''
+        self.menu = False
 
     def main(self):
         while True:
@@ -31,11 +36,37 @@ class Game():
                 pygame.quit()
                 sys.exit()
 
+            if event.type == pygame.MOUSEBUTTONUP:
+                mouse = pygame.mouse.get_pos()
+                button = event.button
+
+                if self.scene == 'title':
+                    scenetitle.mouse_up(self, button, mouse)
+                if self.scene == 'field':
+                    scenefield.mouse_up(self, button, mouse)
+
+            if event.type == pygame.KEYDOWN:
+                key = event.key
+
+                if self.scene == 'title':
+                    scenetitle.key_down(self, key)
+                elif self.scene == 'field':
+                    scenefield.key_down(self, key)
+
+            if event.type == pygame.KEYUP:
+                if self.scene == 'title':
+                    scenetitle.key_up(self, key)
+                elif self.scene == 'field':
+                    scenefield.key_up(self, key)
+
     def handle_scene(self):
         if self.scene == 'title':
             scenetitle.loop(self)
 
         elif self.scene == 'field':
             scenefield.loop(self)
+
+    def point_inside_rect_UI(point, rect):
+        return point[0] > rect[0] and point[0] < rect[0] + rect[2] and point[1] > rect[1] and point[1] < rect[0] + rect[2]
 
 Game().run()
