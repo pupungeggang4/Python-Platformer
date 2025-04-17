@@ -11,6 +11,7 @@ def loop(game):
 
 def render(game):
     game.screen.fill(res.COLOR_WHITE)
+    game.field.render(game)
     if game.menu == True:
         Render.render_menu(game)
     pygame.display.flip()

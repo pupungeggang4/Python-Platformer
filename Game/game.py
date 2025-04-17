@@ -3,6 +3,8 @@ import res
 
 from primitive import *
 from prototype import *
+from player import *
+from field import *
 
 import scenetitle
 import scenefield
@@ -18,6 +20,8 @@ class Game():
 
         res.font_neodgm_32 = pygame.font.Font('Font/neodgm.ttf', 32)
 
+        self.load_image()
+
         self.resolution = [1280, 800]
         self.screen = pygame.display.set_mode(self.resolution, pygame.SCALED, vsync=1)
         pygame.display.set_caption('Platformer')
@@ -27,6 +31,8 @@ class Game():
         self.scene = 'title'
         self.state = ''
         self.menu = False
+
+        self.field = Field()
 
     def main(self):
         while True:
@@ -58,6 +64,8 @@ class Game():
                     scenefield.key_down(self, key)
 
             if event.type == pygame.KEYUP:
+                key = event.key
+
                 if self.scene == 'title':
                     scenetitle.key_up(self, key)
                 elif self.scene == 'field':
@@ -70,8 +78,10 @@ class Game():
         elif self.scene == 'field':
             scenefield.loop(self)
 
-    @staticmethod
-    def point_inside_rect_UI(point, rect):
+    def load_image(self):
+        res.Image.coin = pygame.image.load('Image/Coin.png')
+
+    def point_inside_rect_UI(self, point, rect):
         return point[0] > rect[0] and point[0] < rect[0] + rect[2] and point[1] > rect[1] and point[1] < rect[0] + rect[2]
 
 Game().run()
