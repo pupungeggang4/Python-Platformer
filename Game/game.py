@@ -33,6 +33,7 @@ class Game():
         self.menu = False
 
         self.field = Field()
+        self.player = Player()
 
     def main(self):
         while True:

@@ -5,6 +5,9 @@ class Title():
     button_erase = [160, 240, 960, 80]
     text_erase = [168, 264]
 
+class Field():
+    text_coin = [24, 744]
+
 class Menu():
     rect = [320, 280, 640, 240]
     text_pause = [324, 304]
@@ -12,3 +15,4 @@ class Menu():
     text_resume = [324, 384]
     button_exit = [320, 440, 640, 80]
     text_exit = [324, 464]
+    
