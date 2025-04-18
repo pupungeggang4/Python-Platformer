@@ -47,7 +47,6 @@ class Game():
             self.handle_scene()
             self.time_after = pygame.time.get_ticks()
             self.delta = self.time_after - self.time
-            print(self.delta)
             if self.delta <= 16:
                 pygame.time.wait(16 - self.delta)
                 self.delta = 16
