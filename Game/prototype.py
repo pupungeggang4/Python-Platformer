@@ -10,11 +10,10 @@ class Collectable(Thing):
     def __init__(self):
         pass
 
-    def collect_handle(self, player):
-        if self.rect.collide_with_shape(player.rect):
-            player.coin += 1
-            return True
-        return False
+    def collect_handle(self, game):
+        if self.rect.collide_with_shape(game.field.player.rect):
+            game.field.player.coin += 1
+            game.field.thing.remove(self)
 
 class Coin(Collectable):
     def __init__(self, pos):
@@ -29,7 +28,7 @@ class Coin(Collectable):
         pass
 
     def render(self, game):
-        self.animation_time += 1.0 / game.fps
+        self.animation_time += game.delta / 1000
         self.frame = int(self.animation_time / self.frametime) % self.frames
         self.surface.fill(res.COLOR_EMPTY)
         self.surface.blit(res.Image.coin, [0, 0], [40 * self.frame, 0, 40, 40])

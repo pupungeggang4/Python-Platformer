@@ -12,13 +12,13 @@ class Player():
 
     def handle_tick(self, game):
         if game.key_pressed['left'] == True:
-            self.rect.position.x -= self.speed / game.fps
+            self.rect.position.x -= self.speed * game.delta / 1000
         if game.key_pressed['right'] == True:
-            self.rect.position.x += self.speed / game.fps
+            self.rect.position.x += self.speed * game.delta / 1000
         if game.key_pressed['up'] == True:
-            self.rect.position.y -= self.speed / game.fps
+            self.rect.position.y -= self.speed * game.delta / 1000
         if game.key_pressed['down'] == True:
-            self.rect.position.y += self.speed / game.fps
+            self.rect.position.y += self.speed * game.delta / 1000
 
     def render(self, game):
         rect = [self.rect.position.x - self.rect.size.x / 2, self.rect.position.y - self.rect.size.y / 2, self.rect.size.x, self.rect.size.y]

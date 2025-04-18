@@ -36,12 +36,21 @@ class Game():
         self.key_map = {'left': pygame.K_a, 'right': pygame.K_d, 'up': pygame.K_w, 'down': pygame.K_s}
 
         self.field = Field()
+        self.delta = 16
+        self.time = pygame.time.get_ticks()
+        self.time_after = pygame.time.get_ticks()
 
     def main(self):
         while True:
-            self.clock.tick(self.fps)
+            self.time = pygame.time.get_ticks()
             self.handle_input()
             self.handle_scene()
+            self.time_after = pygame.time.get_ticks()
+            self.delta = self.time_after - self.time
+            print(self.delta)
+            if self.delta <= 16:
+                pygame.time.wait(16 - self.delta)
+                self.delta = 16
 
     def handle_input(self):
         for event in pygame.event.get():
