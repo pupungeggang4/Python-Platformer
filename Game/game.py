@@ -32,8 +32,10 @@ class Game():
         self.state = ''
         self.menu = False
 
+        self.key_pressed = {'left': False, 'right': False, 'up': False, 'down': False}
+        self.key_map = {'left': pygame.K_a, 'right': pygame.K_d, 'up': pygame.K_w, 'down': pygame.K_s}
+
         self.field = Field()
-        self.player = Player()
 
     def main(self):
         while True:
@@ -59,6 +61,10 @@ class Game():
             if event.type == pygame.KEYDOWN:
                 key = event.key
 
+                for k in self.key_map.keys():
+                    if key == self.key_map[k]:
+                        self.key_pressed[k] = True
+
                 if self.scene == 'title':
                     scenetitle.key_down(self, key)
                 elif self.scene == 'field':
@@ -66,6 +72,10 @@ class Game():
 
             if event.type == pygame.KEYUP:
                 key = event.key
+
+                for k in self.key_map.keys():
+                    if key == self.key_map[k]:
+                        self.key_pressed[k] = False
 
                 if self.scene == 'title':
                     scenetitle.key_up(self, key)
@@ -81,6 +91,7 @@ class Game():
 
     def load_image(self):
         res.Image.coin = pygame.image.load('Image/Coin.png')
+        res.Image.wall = pygame.image.load('Image/Wall.png')
 
     def point_inside_rect_UI(self, point, rect):
         return point[0] > rect[0] and point[0] < rect[0] + rect[2] and point[1] > rect[1] and point[1] < rect[0] + rect[2]
