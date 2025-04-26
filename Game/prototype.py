@@ -49,5 +49,16 @@ class Wall(Thing):
         pos = [self.rect.position.x - self.rect.size.x / 2, self.rect.position.y - self.rect.size.y / 2]
         game.screen.blit(self.surface, pos)
 
-class TileMap(Thing):
+class TerrainCell(Thing):
+    def __init__(self):
+        pass
+
+class EmptyCell(TerrainCell):
     pass
+
+class SolidCell(TerrainCell):
+    pass
+
+class Terrain():
+    def __init__(self, start, size):
+        self.start = Vector2D(start[0], start[1])
