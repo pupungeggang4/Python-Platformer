@@ -6,6 +6,7 @@ class Title():
     text_erase = [168, 264]
 
 class Field():
+    button_menu = [1160, 40, 80, 80]
     text_coin = [24, 744]
 
 class Menu():

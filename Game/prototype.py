@@ -19,8 +19,7 @@ class Coin(Collectable):
     def __init__(self, pos):
         self.rect = Rect2D(pos[0], pos[1], 40, 40)
         self.surface = pygame.surface.Surface([self.rect.size.x, self.rect.size.y], pygame.SRCALPHA)
-        self.animation_time = 0
-        self.frametime = 0.2
+        self.frametime = 200
         self.frames = 4
         self.frame = 0
 
@@ -28,8 +27,7 @@ class Coin(Collectable):
         pass
 
     def render(self, game):
-        self.animation_time += game.delta / 1000
-        self.frame = int(self.animation_time / self.frametime) % self.frames
+        self.frame = int(pygame.time.get_ticks() / self.frametime) % self.frames
         self.surface.fill(res.COLOR_EMPTY)
         self.surface.blit(res.Image.coin, [0, 0], [40 * self.frame, 0, 40, 40])
         pos = [self.rect.position.x - self.rect.size.x / 2, self.rect.position.y - self.rect.size.y / 2]

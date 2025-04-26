@@ -3,6 +3,8 @@ import pygame
 import res
 import UI
 
+from field import *
+
 def loop(game):
     render(game)
 
@@ -20,6 +22,7 @@ def mouse_up(game, button, mouse):
         if game.point_inside_rect_UI(mouse, UI.Title.button_start):
             game.scene = 'field'
             game.state = ''
+            game.field = Field()
 
 def key_down(game, key):
     pass

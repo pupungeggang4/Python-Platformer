@@ -102,6 +102,6 @@ class Game():
         res.Image.wall = pygame.image.load('Image/Wall.png')
 
     def point_inside_rect_UI(self, point, rect):
-        return point[0] > rect[0] and point[0] < rect[0] + rect[2] and point[1] > rect[1] and point[1] < rect[0] + rect[2]
+        return point[0] > rect[0] and point[0] < rect[0] + rect[2] and point[1] > rect[1] and point[1] < rect[1] + rect[3]
 
 Game().run()
