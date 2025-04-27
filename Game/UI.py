@@ -7,7 +7,10 @@ class Title():
 
 class Field():
     button_menu = [1160, 40, 80, 80]
-    text_coin = [24, 744]
+    icon_life = []
+    text_life = []
+    icon_coin = [20, 740]
+    text_coin = [64, 744]
 
 class Menu():
     rect = [320, 280, 640, 240]
@@ -16,4 +19,3 @@ class Menu():
     text_resume = [324, 384]
     button_exit = [320, 440, 640, 80]
     text_exit = [324, 464]
-    

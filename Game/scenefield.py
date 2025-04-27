@@ -15,6 +15,7 @@ def loop(game):
 def render(game):
     game.screen.fill(res.COLOR_WHITE)
     game.field.render(game)
+    game.screen.blit(res.Image.icon_coin, UI.Field.icon_coin)
     game.screen.blit(res.font_neodgm_32.render(f'{game.field.player.coin}', False, res.COLOR_BLACK), UI.Field.text_coin)
     pygame.draw.rect(game.screen, res.COLOR_BLACK, UI.Field.button_menu, 2)
     if game.menu == True:

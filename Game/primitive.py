@@ -1,3 +1,7 @@
+import pygame
+
+import res
+
 class Vector2D():
     def __init__(self, x, y):
         self.x = x
@@ -28,6 +32,9 @@ class Rect2D():
             diff = Vector2D.sub(self.position, shape.position)
             sizeSum = Vector2D.mul(Vector2D.add(self.size, shape.size), 0.5)
             return abs(diff.x) < sizeSum.x and abs(diff.y) < sizeSum.y
+
+    def render(self, sur):
+        pygame.draw.rect(sur, res.COLOR_BLACK, [self.position.x - self.size.x / 2, self.position.y - self.size.y / 2, self.size.x, self.size.y], 1)
 
     @staticmethod
     def two_rect_collide(rect1, rect2):

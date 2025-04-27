@@ -98,8 +98,10 @@ class Game():
             scenefield.loop(self)
 
     def load_image(self):
-        res.Image.coin = pygame.image.load('Image/Coin.png')
-        res.Image.wall = pygame.image.load('Image/Wall.png')
+        res.Image.coin = pygame.image.load('Image/Thing/Coin.png')
+        res.Image.wall = pygame.image.load('Image/Thing/Wall.png')
+        res.Image.icon_coin = pygame.image.load('Image/Thing/IconCoin.png')
+        res.Image.terrain_plains = pygame.image.load('Image/Terrain/TerrainPlains.png')
 
     def point_inside_rect_UI(self, point, rect):
         return point[0] > rect[0] and point[0] < rect[0] + rect[2] and point[1] > rect[1] and point[1] < rect[1] + rect[3]
